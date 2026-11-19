@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>TubeDirector Engine</title><link rel="stylesheet" href="./style.css"/></head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+<div class="brand"><div class="logo">▷</div><div><strong>TubeDirector</strong><small>ENGINE • BY MANTOAN</small></div></div>
+<div class="nav-item active">◉ <span>Visão geral</span></div><div class="nav-item">◈ <span>Narração local</span></div><div class="spacer"></div><div class="tiny">v0.2.0 · aplicativo auxiliar</div>
+</aside>
+<main>
+<header><div><span class="eyebrow">MOTOR DE NARRAÇÃO LOCAL</span><h1>Sua voz. <em>Seu computador.</em></h1><p>Crie narrações diretamente no TubeDirector, sem precisar de terminal.</p></div><span id="statusPill" class="pill">● Verificando</span></header>
+<section class="hero-card"><div class="glow"></div><div class="engine-icon">◈</div><div class="main-stat"><span class="eyebrow">PROCESSAMENTO</span><h2 id="engineName">TubeDirector Engine</h2><p id="engineStatus">Verificando a conexão com o motor...</p></div><div class="controls"><button id="start" class="primary">▶ Iniciar motor</button><button id="stop" class="secondary">■ Encerrar</button></div></section>
+<section class="grid"><article class="glass"><span class="eyebrow">CONEXÃO</span><h3>Conectar ao TubeDirector</h3><p>Inicie o Engine, copie seu token e cole na tela de Narração IA do site.</p><div class="token-row"><input id="token" value="Inicie o motor para criar o token" readonly type="password" aria-label="Token de pareamento"/><button id="reveal" class="secondary" aria-label="Exibir token">◉</button><button id="copy" class="primary">Copiar</button></div><a href="https://tubedirector.com.br" target="_blank" rel="noreferrer">Abrir TubeDirector ↗</a></article>
+<article class="glass"><span class="eyebrow">MODELOS</span><h3>Geração no seu dispositivo</h3><p id="modelStatus">O modelo será baixado pelo motor na primeira geração, se necessário.</p><div class="detail"><span>Áudio salvo em</span><strong id="outputDir">Música / TubeDirector-Narracoes</strong></div><div class="detail"><span>Execução</span><strong>127.0.0.1:8765 · local</strong></div></article></section>
+<section class="glass next"><span class="eyebrow">COMO UTILIZAR</span><div class="steps"><div><b>01</b><span>Inicie o Engine</span></div><div><b>02</b><span>Copie e conecte o token</span></div><div><b>03</b><span>Gere a narração pelo site</span></div></div></section>
+<section class="glass diagnostics"><div class="diagnostics-heading"><div><span class="eyebrow">VERIFICAÇÃO</span><h3>Diagnóstico do computador</h3><p id="compatibility">Detectando ambiente de execução...</p></div><button id="diagnose" class="secondary">Atualizar diagnóstico</button></div><div class="diagnostics-grid"><div><span>Compatibilidade</span><strong id="diagSystem">—</strong></div><div><span>Motor incluído</span><strong id="diagBinary">—</strong></div><div><span>Porta 8765</span><strong id="diagPort">—</strong></div><div><span>Versão da bridge</span><strong id="diagBridge">—</strong></div></div><p class="diagnostics-path" id="logPath"></p></section><div id="notice" role="status" aria-live="polite"></div>
+</main>
+</div>
+<script type="module" src="./main.js"></script>
+</body></html>

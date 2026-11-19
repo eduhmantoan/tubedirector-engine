@@ -1,0 +1,17 @@
+{
+  "name": "tubedirector-engine",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "python scripts/check-build.py && tauri build",
+    "test": "python3 -m unittest discover -s tests -v"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}

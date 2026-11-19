@@ -1,0 +1,6 @@
+{
+  "identifier": "default",
+  "description": "Comandos restritos da janela principal",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

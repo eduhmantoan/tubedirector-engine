@@ -1,0 +1,14 @@
+node_modules/
+dist/
+target/
+src-tauri/target/
+src-tauri/resources/bin/tubedirector-tts*
+src-tauri/resources/bridge.py
+src-tauri/icons/*.png
+src-tauri/icons/*.ico
+src-tauri/icons/*.icns
+src-tauri/icons/*.iconset/
+*.pyc
+__pycache__/
+.venv/
+.DS_Store
