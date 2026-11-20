@@ -1,0 +1,25 @@
+name: Descontinuar instaladores do Engine
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/retire-releases.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  retire:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Excluir instaladores e releases antigos
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for tag in v0.2.0 v0.3.0; do
+            if gh release view "$tag" >/dev/null 2>&1; then
+              gh release delete "$tag" --yes --cleanup-tag
+            fi
+          done
+          echo "Releases do Engine retiradas."
