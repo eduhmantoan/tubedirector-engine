@@ -28,7 +28,7 @@ def restore():
     end = source.index("    def send_json(self,", start)
     source = source[:start] + source[end:]
     source, removed = re.subn(
-        r"        if not self\\.valid_audio_ticket\\(\\):\\n            return self\\.send_json\\(403,.*\\)\\n",
+        r"        if not self\.valid_audio_ticket\(\):\n            return self\.send_json\(403,.*\)\n",
         "", source, count=1
     )
     if removed != 1:
