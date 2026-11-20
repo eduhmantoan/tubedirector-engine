@@ -10,6 +10,7 @@ import base64
 import gzip
 import hashlib
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / "vendor/bridge.py.gz.b64"
@@ -21,8 +22,22 @@ def restore():
     got = hashlib.sha256(data).hexdigest()
     if got != EXPECTED_SHA256:
         raise SystemExit("O arquivo original bridge.py não passou na validação SHA256: " + got)
+    # v0.3: autorização de plano ocorre no site; Engine autentica apenas o token local.
+    source = data.decode("utf-8")
+    start = source.index("    def valid_audio_ticket(self):")
+    end = source.index("    def send_json(self,", start)
+    source = source[:start] + source[end:]
+    source, removed = re.subn(
+        r"        if not self\\.valid_audio_ticket\\(\\):\\n            return self\\.send_json\\(403,.*\\)\\n",
+        "", source, count=1
+    )
+    if removed != 1:
+        raise SystemExit("O bloqueio antigo de ticket não foi localizado; compilação cancelada.")
+    source = source.replace("Content-Type, X-TD-Local-Token, X-TD-Audio-Ticket", "Content-Type, X-TD-Local-Token")
+    if "valid_audio_ticket" in source or "validate-audio-ticket" in source:
+        raise SystemExit("O Engine ainda contém validação de ticket por áudio.")
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_bytes(data)
+    OUTPUT.write_text(source, encoding="utf-8")
     print("bridge.py restaurado e verificado:", len(data), "bytes", got)
 
 if __name__ == "__main__":

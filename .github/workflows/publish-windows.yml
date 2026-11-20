@@ -59,8 +59,8 @@ jobs:
         shell: bash
         working-directory: .
         run: |
-          gh release view v0.2.0 >/dev/null 2>&1 || gh release create v0.2.0 --title "TubeDirector Engine 0.2.0 - Windows" --notes "Instalador Windows x64. Motor de narração local Piper. Aplicativo ainda não assinado digitalmente."
-          gh release upload v0.2.0 TubeDirector-Engine-Setup.exe --clobber
+          gh release view v0.3.0 >/dev/null 2>&1 || gh release create v0.3.0 --title "TubeDirector Engine 0.3.0 - Windows" --notes "Instalador Windows x64: narração local sem tickets por áudio. O acesso Pro/Max continua controlado pelo site. Aplicativo não assinado digitalmente."
+          gh release upload v0.3.0 TubeDirector-Engine-Setup.exe --clobber
       - name: Guardar cópia de recuperação
         uses: actions/upload-artifact@v4
         with:

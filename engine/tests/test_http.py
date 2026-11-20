@@ -79,7 +79,7 @@ class HTTPContractTests(unittest.TestCase):
         self.assertEqual(code,403)
         self.assertNotIn("Access-Control-Allow-Origin",headers)
 
-    def test_generation_requires_billing_ticket(self):
+    def test_generation_uses_local_token_without_billing_ticket(self):
         body=json.dumps({"text":"Teste","speaker":"piper_cadu","language":"Portuguese"}).encode()
         code,_,data = self.response("/jobs",self.token,method="POST",body=body)
         self.assertEqual(code,403)
