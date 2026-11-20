@@ -82,5 +82,5 @@ class HTTPContractTests(unittest.TestCase):
     def test_generation_uses_local_token_without_billing_ticket(self):
         body=json.dumps({"text":"Teste","speaker":"piper_cadu","language":"Portuguese"}).encode()
         code,_,data = self.response("/jobs",self.token,method="POST",body=body)
-        self.assertEqual(code,403)
-        self.assertIn("assinatura",json.loads(data)["error"])
+        self.assertEqual(code,202)
+        self.assertTrue(json.loads(data)["id"])
